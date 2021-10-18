@@ -25,12 +25,12 @@ yarn install
 
 ### :three: Compiles and hot-reloads for development
 ```
-yarn serve
+yarn electron:serve
 ```
 
 ### :four: Compiles and minifies for production
 ```
-yarn build
+yarn electron:build
 ```
 
 ### :five: Lints and fixes files

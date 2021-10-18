@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { ipcRenderer } from "electron";
 import Pill from "./Pill.vue";
 
 export default {
@@ -33,26 +34,18 @@ export default {
   data() {
     return {
       files: [],
-      groupedWords: [
-        {
-          name: "i",
-          amount: "1034",
-        },
-        {
-          name: "you",
-          amount: "1334",
-        },
-        {
-          name: "how",
-          amount: "301",
-        },
-      ],
+      groupedWords: [],
     };
   },
 
   methods: {
     processSubtitles() {
-      console.log(this.files);
+      const paths = this.files.map(f => f.path)
+      ipcRenderer.send("process-subtitle", paths);
+      ipcRenderer.on("process-subtitle", (evt, resp) => {
+        // Vai receber os objetos com as informações das palavras
+        this.groupedWords = resp;
+      });
     },
   },
 };

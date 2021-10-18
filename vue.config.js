@@ -3,3 +3,11 @@ module.exports = {
     'vuetify'
   ]
 }
+
+module.exports = {
+  pluginOptions: {
+    electronBuilder: {
+      nodeIntegration: true
+    }
+  }
+}
