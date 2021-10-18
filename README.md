@@ -1,21 +1,39 @@
-# most-used-words
+# Most Used Words :books:
 
-## Project setup
+- Desktop application using Vue.js, Vuetify and Electron.js.
+
+## :rocket: How to get started ?
+
+### :hammer: Prerequisites for running the project locally
+    - Git
+    - Node.js
+    - NPM or Yarn
+    - Code editor(VSCode, Sublime, Atom, etc...)
+
+## Follow the following steps:
+
+### :one: Clone the repository
+
+```
+git clone <repositoryurl>
+```
+
+### :two: Install dependences
 ```
 yarn install
 ```
 
-### Compiles and hot-reloads for development
+### :three: Compiles and hot-reloads for development
 ```
 yarn serve
 ```
 
-### Compiles and minifies for production
+### :four: Compiles and minifies for production
 ```
 yarn build
 ```
 
-### Lints and fixes files
+### :five: Lints and fixes files
 ```
 yarn lint
 ```
