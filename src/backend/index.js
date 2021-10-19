@@ -1,20 +1,29 @@
 // IPC = Inter Process Communication
 // O IPC é utilizando no Electron para criar canais de comunição com outros arquivos da aplicação
-import { ipcMain } from 'electron'
+import {
+    ipcMain
+} from 'electron'
+
+const pathToRows = require('./pathToRows')
+const prepareData = require('./prepareData')
 
 ipcMain.on('process-subtitle', (evt, paths) => {
-    console.log(paths)
-    evt.reply('process-subtitle', [{
-            name: "i",
-            amount: "1034",
-        },
-        {
-            name: "you",
-            amount: "1334",
-        },
-        {
-            name: "how",
-            amount: "301",
-        },
-    ])
+    pathToRows(paths)
+        .then((rows) => prepareData(rows))
+        .then((words) => console.log(words))
+        .then(() => {
+            evt.reply('process-subtitle', [{
+                    name: "i",
+                    amount: "1034",
+                },
+                {
+                    name: "you",
+                    amount: "1334",
+                },
+                {
+                    name: "how",
+                    amount: "301",
+                },
+            ])
+        })
 })

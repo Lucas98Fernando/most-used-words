@@ -15,7 +15,7 @@
 ### :one: Clone the repository
 
 ```
-git clone <repositoryurl>
+git clone https://github.com/Lucas98Fernando/most-used-words.git
 ```
 
 ### :two: Install dependences
