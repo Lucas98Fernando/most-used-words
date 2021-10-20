@@ -2,7 +2,7 @@
   <div class="pill">
     <v-chip class="ma-2" color="red" text-color="white">
       {{ name }}
-      <v-avatar right class="red darken-4 px-4">
+      <v-avatar right class="white red--text px-4">
         {{ amount }}
       </v-avatar>
     </v-chip>

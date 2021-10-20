@@ -6,24 +6,11 @@ import {
 
 const pathToRows = require('./pathToRows')
 const prepareData = require('./prepareData')
+const groupedWords = require('./groupedWords')
 
 ipcMain.on('process-subtitle', (evt, paths) => {
     pathToRows(paths)
         .then((rows) => prepareData(rows))
-        .then((words) => console.log(words))
-        .then(() => {
-            evt.reply('process-subtitle', [{
-                    name: "i",
-                    amount: "1034",
-                },
-                {
-                    name: "you",
-                    amount: "1334",
-                },
-                {
-                    name: "how",
-                    amount: "301",
-                },
-            ])
-        })
+        .then((words) => groupedWords(words))
+        .then((groupedWords) => evt.reply('process-subtitle', groupedWords))
 })

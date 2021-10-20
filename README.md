@@ -2,6 +2,7 @@
 
 - Desktop application using Vue.js, Vuetify and Electron.js.
 
+<img src="public/screenshots/app.png" />
 ## :rocket: How to get started ?
 
 ### :hammer: Prerequisites for running the project locally

@@ -1,11 +1,20 @@
 <template>
   <v-container fluid>
+    <v-overlay :value="overlay">
+      <v-progress-circular
+        color="cyan"
+        indeterminate
+        size="64"
+      ></v-progress-circular>
+      <div>Processando...</div>
+    </v-overlay>
     <v-form>
       <v-file-input
         v-model="files"
         label="Selecione os arquivos de legenda"
         prepend-icon="mdi-subtitles-outline"
         append-outer-icon="mdi-send"
+        color="cyan"
         multiple
         chips
         @click:append-outer="processSubtitles"
@@ -33,6 +42,7 @@ export default {
 
   data() {
     return {
+      overlay: false,
       files: [],
       groupedWords: [],
     };
@@ -40,12 +50,19 @@ export default {
 
   methods: {
     processSubtitles() {
-      const paths = this.files.map(f => f.path)
-      ipcRenderer.send("process-subtitle", paths);
-      ipcRenderer.on("process-subtitle", (evt, resp) => {
-        // Vai receber os objetos com as informações das palavras
-        this.groupedWords = resp;
-      });
+      try {
+        this.overlay = true;
+        const paths = this.files.map((f) => f.path);
+        ipcRenderer.send("process-subtitle", paths);
+        ipcRenderer.on("process-subtitle", (evt, resp) => {
+          // Vai receber os objetos com as informações das palavras
+          this.groupedWords = resp;
+          this.overlay = false;
+        });
+      } catch (e) {
+        console.log(e);
+        this.overlay = false;
+      }
     },
   },
 };

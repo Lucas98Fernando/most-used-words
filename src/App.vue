@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="cyan" dark>
       <img
         class="mr-2"
-        src="https://cdn-icons-png.flaticon.com/512/5088/5088981.png"
+        src="@/assets/logo.png"
         alt="Logo"
         width="50"
       />
